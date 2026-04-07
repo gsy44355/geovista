@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GeoVista — Explore Earth's Landscapes</title>
+  <meta name="description" content="Discover the diverse geographical landscapes of countries around the world. From towering mountains to vast deserts, explore Earth's natural wonders.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
+</head>
+<body>
+
+  <!-- HOME VIEW -->
+  <div id="home-view">
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="#/" class="logo">Geo<span>Vista</span></a>
+        <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+        <nav>
+          <a href="#hero">Home</a>
+          <a href="#explore">Explore</a>
+          <a href="#continent-asia">Asia</a>
+          <a href="#continent-europe">Europe</a>
+          <a href="#continent-americas">Americas</a>
+          <a href="#continent-africa">Africa</a>
+          <a href="#continent-oceania">Oceania</a>
+          <a href="#stats-section">Stats</a>
+          <a href="#gallery-section">Gallery</a>
+          <a href="#about">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-globe" id="globe-container"></div>
+      <div class="hero-content">
+        <h1>Explore Earth's Landscapes</h1>
+        <p>A curated journey through the planet's most breathtaking geographical wonders — from volcanic islands to ancient deserts, glacial fjords to tropical rainforests.</p>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="num" data-target="22" data-suffix="+">0</div><div class="label">Countries</div></div>
+          <div class="hero-stat"><div class="num" data-target="5">0</div><div class="label">Continents</div></div>
+          <div class="hero-stat"><div class="num" data-target="88" data-suffix="+">0</div><div class="label">Landmarks</div></div>
+          <div class="hero-stat"><div class="num" data-target="40" data-suffix="M+ km²">0</div><div class="label">Area Covered</div></div>
+        </div>
+      </div>
+      <div class="scroll-hint">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M15 5v20M8 18l7 7 7-7" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+    </section>
+
+    <!-- FILTER -->
+    <section class="continent-section" id="explore" style="padding-bottom:2rem">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Explore by Continent</h2>
+        <p>Filter by region to discover the unique landscapes each continent has to offer.</p>
+      </div>
+      <div id="filter-bar" class="filter-bar"></div>
+    </section>
+
+    <!-- COUNTRIES (dynamic) -->
+    <div id="countries-container"></div>
+
+    <!-- STATISTICS -->
+    <section class="continent-section" id="stats-section">
+      <div class="section-header" data-aos="fade-up">
+        <h2>By The Numbers</h2>
+        <p>Visualizing the scale and diversity of Earth's geography across the countries we explore.</p>
+      </div>
+      <div class="charts-grid" data-aos="fade-up" data-aos-delay="200">
+        <div class="chart-card">
+          <h3>Largest Countries by Area</h3>
+          <div class="chart-container"><canvas id="chart-area"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <h3>Countries by Continent</h3>
+          <div class="chart-container chart-container-sm"><canvas id="chart-continents"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTO GALLERY -->
+    <section class="continent-section" id="gallery-section">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Photography</h2>
+        <p>A visual journey through Earth's most stunning landscapes. Click any image to explore.</p>
+      </div>
+      <div id="photo-gallery" data-aos="fade-up" data-aos-delay="100"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="continent-section" id="about">
+      <div class="section-header" data-aos="fade-up">
+        <h2>About GeoVista</h2>
+        <p>GeoVista is a passion project dedicated to showcasing the incredible geographic diversity of our planet. Every landscape tells a story of geological forces, climate patterns, and millions of years of Earth's history.</p>
+      </div>
+      <div style="max-width:800px;margin:0 auto">
+        <div class="about-grid" data-aos="fade-up" data-aos-delay="100">
+          <div class="info-card">
+            <h4>Mission</h4>
+            <p>Inspire geographic curiosity and appreciation for Earth's natural wonders through immersive visual storytelling.</p>
+          </div>
+          <div class="info-card">
+            <h4>Coverage</h4>
+            <p>22 countries across 5 continents, with detailed geographic profiles, landmark guides, and stunning photography.</p>
+          </div>
+          <div class="info-card">
+            <h4>Sources</h4>
+            <p>Geographic data sourced from national geographic surveys, UNESCO World Heritage records, and scientific publications.</p>
+          </div>
+          <div class="info-card">
+            <h4>Photography</h4>
+            <p>Images provided by talented photographers from around the world via Unsplash's open photography community.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <span class="logo">Geo<span>Vista</span></span>
+            <p>Exploring the geographic diversity and natural beauty of our planet, one country at a time.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Continents</h4>
+            <a href="#continent-asia">Asia</a>
+            <a href="#continent-europe">Europe</a>
+            <a href="#continent-americas">Americas</a>
+            <a href="#continent-africa">Africa</a>
+            <a href="#continent-oceania">Oceania</a>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="#">Geographic Data</a>
+            <a href="#">Photography Credits</a>
+            <a href="#">UNESCO Heritage</a>
+            <a href="#">Climate Zones</a>
+          </div>
+          <div class="footer-col">
+            <h4>Connect</h4>
+            <a href="#">Newsletter</a>
+            <a href="#">Contact</a>
+            <a href="#">Contribute</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          &copy; 2024 GeoVista. Built with curiosity about our planet.
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- COUNTRY DETAIL VIEW (router fills this) -->
+  <div id="country-view" style="display:none"></div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
