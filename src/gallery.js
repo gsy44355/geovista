@@ -2,6 +2,7 @@ import lightGallery from 'lightgallery'
 import lgZoom from 'lightgallery/plugins/zoom'
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import { COUNTRIES } from './data.js'
+import { attachImageFallbacks, imageSources, setParallelImageSources } from './assets.js'
 
 /**
  * Fisher-Yates shuffle for an array (in-place).
@@ -29,12 +30,14 @@ function buildGalleryItems(countries) {
 
     selected.forEach((imgUrl, idx) => {
       // Thumbnail: use the image as-is (w=800)
-      const thumbnail = imgUrl
-      // Full size: swap to w=1200 for the lightbox
-      const fullSize = imgUrl.replace(/w=\d+/, 'w=1200')
+      const keywords = [country.name, country.continent, country.terrain, country.climate, ...(country.tags || [])]
+      const thumbnailSources = imageSources(imgUrl, 700, { label: country.name, keywords })
+      const [thumbnail] = thumbnailSources
+      const [fullSize] = imageSources(imgUrl, 1400, { label: country.name, keywords })
 
       items.push({
         thumbnail,
+        thumbnailSources,
         fullSize,
         caption: `${country.flag} ${country.name}`,
         country: country.name,
@@ -126,10 +129,10 @@ function createGalleryGrid(container, items) {
     anchor.setAttribute('data-sub-html', `<p>${item.caption}</p>`)
 
     const img = document.createElement('img')
-    img.src = item.thumbnail
     img.alt = item.caption
     img.loading = 'lazy'
     img.decoding = 'async'
+    setParallelImageSources(img, item.thumbnailSources, item.caption)
 
     const caption = document.createElement('div')
     caption.className = 'gallery-caption'
@@ -161,6 +164,7 @@ export function initGallery() {
 
   // Create the masonry grid with gallery images
   createGalleryGrid(container, items)
+  attachImageFallbacks(container)
 
   // Initialize lightGallery on the container
   const gallery = lightGallery(container, {

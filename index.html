@@ -22,6 +22,11 @@
         <button class="nav-toggle" aria-label="Menu">&#9776;</button>
         <nav>
           <a href="#hero">Home</a>
+          <a href="#world-brief-section">Brief</a>
+          <a href="#landscape-section">Landscapes</a>
+          <a href="#climate-section">Climate</a>
+          <a href="#explorer-section">Explorer</a>
+          <a href="#journeys-section">Journeys</a>
           <a href="#explore">Explore</a>
           <a href="#continent-asia">Asia</a>
           <a href="#continent-europe">Europe</a>
@@ -61,6 +66,56 @@
         <p>Filter by region to discover the unique landscapes each continent has to offer.</p>
       </div>
       <div id="filter-bar" class="filter-bar"></div>
+    </section>
+
+    <!-- WORLD BRIEF -->
+    <section class="continent-section feature-section" id="world-brief-section">
+      <div class="section-header" data-aos="fade-up">
+        <span class="continent-badge badge-oceania">Atlas Mode</span>
+        <h2>Start with the Planet View</h2>
+        <p>Use the collection like a compact field guide: scan scale, coverage, climate range, and mapped landmarks before diving into individual countries.</p>
+      </div>
+      <div id="world-brief"></div>
+    </section>
+
+    <!-- LANDSCAPE ATLAS -->
+    <section class="continent-section" id="landscape-section">
+      <div class="section-header" data-aos="fade-up">
+        <span class="continent-badge badge-europe">Systems</span>
+        <h2>Explore by Landscape Type</h2>
+        <p>Continents are only one layer. These cards group countries by terrain, climate, and geological character so visitors can follow natural systems across borders.</p>
+      </div>
+      <div id="landscape-atlas" class="landscape-grid"></div>
+    </section>
+
+    <!-- CLIMATE MATRIX -->
+    <section class="continent-section feature-section" id="climate-section">
+      <div class="section-header" data-aos="fade-up">
+        <span class="continent-badge badge-africa">Climate</span>
+        <h2>Climate Matrix</h2>
+        <p>Follow climate signals across countries to see how latitude, elevation, ocean currents, and rain shadows shape the same dataset from another angle.</p>
+      </div>
+      <div id="climate-matrix" class="climate-grid"></div>
+    </section>
+
+    <!-- ATLAS EXPLORER -->
+    <section class="continent-section" id="explorer-section">
+      <div class="section-header" data-aos="fade-up">
+        <span class="continent-badge badge-asia">Explorer</span>
+        <h2>Atlas Explorer</h2>
+        <p>Search and sort the collection by country, climate, terrain, landmark, continent, or landscape system.</p>
+      </div>
+      <div id="atlas-explorer"></div>
+    </section>
+
+    <!-- JOURNEYS -->
+    <section class="continent-section feature-section" id="journeys-section">
+      <div class="section-header" data-aos="fade-up">
+        <span class="continent-badge badge-americas">Routes</span>
+        <h2>Curated Geographic Journeys</h2>
+        <p>Short thematic routes add another reading path through the same static dataset, turning the site from a gallery into an explorable atlas.</p>
+      </div>
+      <div id="journey-planner" class="journey-grid"></div>
     </section>
 
     <!-- COUNTRIES (dynamic) -->
@@ -115,7 +170,7 @@
           </div>
           <div class="info-card">
             <h4>Photography</h4>
-            <p>Images provided by talented photographers from around the world via Unsplash's open photography community.</p>
+            <p>Remote photography is loaded through multiple third-party image domains with graceful fallbacks for resilient global rendering.</p>
           </div>
         </div>
       </div>

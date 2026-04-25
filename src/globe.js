@@ -54,12 +54,20 @@ export function initGlobe() {
     return null
   }
 
+  container.replaceChildren()
+
   const countries = [...COUNTRIES]
   const arcsData = generateArcs(countries)
 
-  // Responsive sizing
-  const width = container.clientWidth || 600
-  const height = container.clientHeight || 600
+  const getSize = () => {
+    const rect = container.getBoundingClientRect()
+    return {
+      width: Math.round(rect.width || container.clientWidth || window.innerWidth || 600),
+      height: Math.round(rect.height || container.clientHeight || window.innerHeight || 600),
+    }
+  }
+
+  const { width, height } = getSize()
 
   const globe = Globe()(container)
     .width(width)
@@ -126,12 +134,18 @@ export function initGlobe() {
   }
 
   // Handle resize
-  const onResize = () => {
-    const w = container.clientWidth || 600
-    const h = container.clientHeight || 600
+  const syncSize = () => {
+    const { width: w, height: h } = getSize()
     globe.width(w).height(h)
   }
-  window.addEventListener('resize', onResize)
+  window.addEventListener('resize', syncSize)
+
+  const resizeObserver = new ResizeObserver(syncSize)
+  resizeObserver.observe(container)
+
+  requestAnimationFrame(syncSize)
+  setTimeout(syncSize, 250)
+  setTimeout(syncSize, 1000)
 
   return globe
 }

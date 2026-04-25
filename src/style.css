@@ -1,8 +1,8 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a28;--border:#2a2a3a;
-  --text:#e8e8f0;--text2:#8888a0;--accent:#6c8aff;--accent2:#ff6c8a;
-  --gold:#ffd700;--emerald:#50c878;
+  --text:#e8e8f0;--text2:#a4a8b8;--accent:#6c8aff;--accent2:#ff6c8a;
+  --gold:#ffd700;--emerald:#50c878;--cyan:#00bfff;--warm:#f2b36d;
 }
 html{scroll-behavior:smooth;font-size:16px}
 body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
@@ -15,7 +15,7 @@ a:hover{color:var(--accent2)}
 .header-inner{max-width:1400px;margin:0 auto;padding:.8rem 2rem;display:flex;align-items:center;justify-content:space-between}
 .logo{font-size:1.4rem;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .logo span{font-weight:300;opacity:.7}
-nav{display:flex;gap:1.5rem;align-items:center}
+nav{display:flex;gap:1rem;align-items:center}
 nav a{color:var(--text2);font-size:.9rem;font-weight:500;transition:color .3s}
 nav a:hover,nav a.active{color:var(--text)}
 .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
@@ -23,8 +23,9 @@ nav a:hover,nav a.active{color:var(--text)}
 /* HERO */
 .hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a2e,#1a0a2e,#0a1a2e);z-index:0}
-.hero-globe{position:absolute;inset:0;z-index:1;opacity:.6}
-.hero-globe canvas{width:100%!important;height:100%!important}
+.hero-globe{position:absolute;inset:0;z-index:1;opacity:.6;display:block;overflow:hidden}
+.hero-globe>div{width:100%!important;height:100%!important}
+.hero-globe canvas{width:100%!important;height:100%!important;display:block}
 .hero-content{position:relative;z-index:2;max-width:800px;padding:2rem;pointer-events:none}
 .hero-content *{pointer-events:auto}
 .hero h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:800;line-height:1.1;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff 0%,var(--accent) 50%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -39,6 +40,7 @@ nav a:hover,nav a.active{color:var(--text)}
 /* CONTINENT SECTIONS */
 .continent-section{padding:6rem 2rem;position:relative}
 .continent-section:nth-child(even){background:var(--surface)}
+.feature-section{background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%)}
 .section-header{max-width:1400px;margin:0 auto 3rem;text-align:center}
 .section-header h2{font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:.8rem}
 .section-header p{color:var(--text2);max-width:600px;margin:0 auto;font-size:1.05rem}
@@ -48,6 +50,81 @@ nav a:hover,nav a.active{color:var(--text)}
 .badge-americas{background:rgba(255,108,138,.15);color:var(--accent2)}
 .badge-africa{background:rgba(255,215,0,.15);color:var(--gold)}
 .badge-oceania{background:rgba(0,191,255,.15);color:#00bfff}
+
+/* WORLD BRIEF */
+.brief-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.2fr .9fr .9fr .9fr;gap:1rem;align-items:stretch}
+.brief-panel{background:var(--surface2);border:1px solid var(--border);border-radius:.8rem;padding:1.4rem;min-height:100%;box-shadow:0 16px 44px rgba(0,0,0,.18)}
+.brief-panel-large{padding:1.8rem}
+.eyebrow{display:inline-block;color:var(--warm);font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.7rem}
+.brief-panel h3{font-size:1.25rem;line-height:1.25;margin-bottom:.75rem}
+.brief-panel-large h3{font-size:clamp(1.6rem,3vw,2.35rem);max-width:760px}
+.brief-panel p{color:var(--text2);line-height:1.75}
+.brief-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.5rem}
+.brief-metrics div{border-top:1px solid var(--border);padding-top:.8rem}
+.brief-metrics strong{display:block;font-size:1.55rem;color:var(--text)}
+.brief-metrics span{display:block;color:var(--text2);font-size:.82rem}
+.rank-list{display:grid;gap:.55rem}
+.rank-row{width:100%;display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:.7rem;background:rgba(255,255,255,.03);border:1px solid transparent;border-radius:.55rem;color:var(--text);padding:.65rem;text-align:left;cursor:pointer;transition:border-color .25s,background .25s}
+.rank-row:hover{border-color:var(--accent);background:rgba(108,138,255,.12)}
+.rank-row span{color:var(--text2);font-size:.78rem}
+.rank-row em{color:var(--text2);font-size:.76rem;font-style:normal;white-space:nowrap}
+.continent-meter-list{display:grid;gap:.75rem}
+.continent-meter{display:grid;grid-template-columns:74px 1fr 24px;align-items:center;gap:.6rem;font-size:.82rem;color:var(--text2)}
+.continent-meter div{height:7px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+.continent-meter i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--cyan));border-radius:inherit}
+.continent-meter strong{color:var(--text);font-size:.85rem;text-align:right}
+
+/* LANDSCAPE ATLAS */
+.landscape-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.landscape-card{background:var(--surface2);border:1px solid var(--border);border-radius:.8rem;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
+.landscape-card:hover{transform:translateY(-4px);border-color:rgba(108,138,255,.55);box-shadow:0 18px 50px rgba(0,0,0,.28)}
+.landscape-media{height:180px;position:relative;overflow:hidden}
+.landscape-media img{width:100%;height:100%;object-fit:cover;display:block}
+.landscape-media::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,.08))}
+.landscape-media span{position:absolute;left:1rem;bottom:1rem;z-index:1;background:rgba(10,10,15,.72);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:.3rem .65rem;color:#fff;font-size:.76rem;font-weight:700}
+.landscape-body{padding:1.2rem}
+.landscape-body h3{font-size:1.05rem;margin-bottom:.55rem}
+.landscape-body p{color:var(--text2);font-size:.88rem;line-height:1.65;margin-bottom:1rem}
+.mini-country-list{display:flex;flex-wrap:wrap;gap:.45rem}
+.mini-country-list button{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:999px;color:var(--text);font-size:.75rem;padding:.32rem .58rem;cursor:pointer;transition:border-color .25s,background .25s}
+.mini-country-list button:hover{border-color:var(--accent);background:rgba(108,138,255,.12)}
+
+/* JOURNEYS */
+.journey-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.journey-card{display:grid;grid-template-columns:54px 1fr;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:.8rem;padding:1.25rem}
+.journey-index{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,108,138,.12);color:var(--accent2);font-weight:800}
+.journey-card h3{font-size:1.1rem;margin-bottom:.55rem}
+.journey-card p{color:var(--text2);font-size:.9rem;line-height:1.65;margin-bottom:1rem}
+.journey-route{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.journey-route button{display:inline-flex;align-items:center;gap:.35rem;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:.55rem;color:var(--text);padding:.45rem .6rem;cursor:pointer;transition:background .25s,border-color .25s}
+.journey-route button:hover{background:rgba(255,108,138,.12);border-color:var(--accent2)}
+
+/* CLIMATE MATRIX */
+.climate-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+.climate-card{background:var(--surface2);border:1px solid var(--border);border-radius:.8rem;padding:1.15rem;min-height:100%;transition:transform .25s,border-color .25s}
+.climate-card:hover{transform:translateY(-3px);border-color:rgba(255,215,0,.45)}
+.climate-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;color:var(--text2)}
+.climate-card-top span{font-size:.78rem;font-weight:800;color:var(--gold)}
+.climate-card-top strong{font-size:1.45rem;color:var(--text)}
+.climate-card h3{font-size:1rem;line-height:1.25;margin-bottom:.55rem}
+.climate-card p{color:var(--text2);font-size:.84rem;line-height:1.6;margin-bottom:1rem}
+.climate-countries{display:flex;flex-wrap:wrap;gap:.4rem}
+.climate-countries button{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:999px;color:var(--text);font-size:.72rem;padding:.3rem .5rem;cursor:pointer}
+.climate-countries button:hover{border-color:var(--gold);background:rgba(255,215,0,.1)}
+
+/* ATLAS EXPLORER */
+.explorer-shell{max-width:1400px;margin:0 auto;background:var(--surface2);border:1px solid var(--border);border-radius:.8rem;padding:1rem}
+.explorer-controls{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:.75rem;margin-bottom:.8rem}
+.explorer-search,.explorer-select{width:100%;height:42px;background:var(--bg);border:1px solid var(--border);border-radius:.55rem;color:var(--text);padding:0 .8rem;font:inherit;font-size:.9rem}
+.explorer-search:focus,.explorer-select:focus{outline:none;border-color:var(--accent)}
+.explorer-meta{color:var(--text2);font-size:.82rem;margin:.4rem 0 .8rem}
+.explorer-results{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.explorer-row{display:grid;grid-template-columns:32px 1fr auto;gap:.55rem;align-items:center;background:rgba(255,255,255,.035);border:1px solid var(--border);border-radius:.6rem;color:var(--text);padding:.75rem;text-align:left;cursor:pointer;transition:border-color .25s,background .25s}
+.explorer-row:hover{border-color:var(--accent);background:rgba(108,138,255,.11)}
+.explorer-row span{font-size:1.35rem}
+.explorer-row strong{font-size:.92rem}
+.explorer-row em{font-style:normal;color:var(--text2);font-size:.76rem}
+.explorer-row small{grid-column:2/4;color:var(--text2);font-size:.76rem;line-height:1.35}
 
 /* COUNTRY GRID */
 .country-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
@@ -63,6 +140,7 @@ nav a:hover,nav a.active{color:var(--text)}
 .card-body .subtitle{color:var(--text2);font-size:.9rem;margin-bottom:1rem}
 .card-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
 .card-tag{padding:.2rem .7rem;background:rgba(108,138,255,.1);border:1px solid rgba(108,138,255,.2);border-radius:1rem;font-size:.75rem;color:var(--accent)}
+.card-summary{color:var(--text2);font-size:.84rem;line-height:1.55;margin-bottom:1rem;min-height:2.6em}
 .card-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;padding-top:1rem;border-top:1px solid var(--border)}
 .card-stat{text-align:center}
 .card-stat .val{font-weight:700;font-size:1rem}
@@ -134,6 +212,7 @@ nav a:hover,nav a.active{color:var(--text)}
 ::-webkit-scrollbar-thumb:hover{background:var(--text2)}
 
 /* RESPONSIVE */
+@media(max-width:1180px){.brief-grid{grid-template-columns:1fr 1fr}.brief-panel-large{grid-column:1/-1}.landscape-grid{grid-template-columns:repeat(2,1fr)}.journey-grid{grid-template-columns:1fr}.climate-grid{grid-template-columns:repeat(2,1fr)}.explorer-controls{grid-template-columns:1fr 1fr}.explorer-results{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:1024px){.gallery-grid{columns:3}.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:768px){
   nav{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--surface);flex-direction:column;padding:5rem 2rem;gap:1.5rem;transition:right .3s;z-index:1001}
@@ -144,12 +223,18 @@ nav a:hover,nav a.active{color:var(--text)}
   .hero-stats{gap:1.5rem}
   .country-grid{grid-template-columns:1fr}
   .modal-hero{height:200px}
+  .brief-grid,.landscape-grid{grid-template-columns:1fr}
+  .brief-metrics{grid-template-columns:1fr}
+  .rank-row{grid-template-columns:24px 1fr}
+  .rank-row em{grid-column:2}
+  .climate-grid,.explorer-controls,.explorer-results{grid-template-columns:1fr}
 }
 @media(max-width:480px){.gallery-grid{columns:1}}
 
 /* CONTINENT CAROUSEL */
 .continent-carousel{max-width:1400px;margin:0 auto 2.5rem;border-radius:1rem;overflow:hidden}
-.carousel-slide{height:320px;background-size:cover;background-position:center;position:relative}
+.carousel-slide{height:320px;position:relative;overflow:hidden}
+.carousel-slide img{width:100%;height:100%;object-fit:cover;display:block}
 .carousel-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.1),rgba(0,0,0,.4))}
 .continent-carousel .swiper-pagination-bullet{background:#fff;opacity:.5}
 .continent-carousel .swiper-pagination-bullet-active{opacity:1;background:var(--accent)}

@@ -1,5 +1,6 @@
 import { COUNTRIES } from './data.js'
 import { createCountryMap } from './maps.js'
+import { attachImageFallbacks, imageAttrs } from './assets.js'
 
 /**
  * Render a full country detail page into the given container element.
@@ -21,6 +22,10 @@ export function renderCountryPage(country, container) {
   if (!country || !container) return
 
   const mapContainerId = `map-${country.id}`
+  const imageKeywords = [country.continent, country.terrain, country.climate, ...(country.tags || [])].filter(Boolean)
+  const relatedCountries = COUNTRIES
+    .filter(item => item.id !== country.id && (item.continent === country.continent || item.tags?.some(tag => country.tags?.includes(tag))))
+    .slice(0, 3)
 
   // Build quick-facts entries, skipping any that are missing
   const facts = [
@@ -31,6 +36,16 @@ export function renderCountryPage(country, container) {
     { label: 'Climate', value: country.climate },
     { label: 'Elevation', value: country.elevation },
   ].filter(f => f.value)
+
+  const parseArea = area => Number(String(area || '').replace(/,/g, '').replace(/\s*km²/i, '').trim()) || 0
+  const parseHighElevation = elevation => {
+    const matches = String(elevation || '').match(/-?\d[\d,]*/g)
+    if (!matches?.length) return 0
+    return Math.max(...matches.map(value => Number(value.replace(/,/g, '')) || 0))
+  }
+  const continentPeers = COUNTRIES.filter(item => item.continent === country.continent)
+  const areaRank = [...COUNTRIES].sort((a, b) => parseArea(b.area) - parseArea(a.area)).findIndex(item => item.id === country.id) + 1
+  const elevationRank = [...COUNTRIES].sort((a, b) => parseHighElevation(b.elevation) - parseHighElevation(a.elevation)).findIndex(item => item.id === country.id) + 1
 
   const factsHtml = facts
     .map(
@@ -68,8 +83,7 @@ export function renderCountryPage(country, container) {
           .map(
             url => `
           <div class="cp-gallery-item">
-            <img src="${url}" alt="${country.name}" loading="lazy"
-              onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#16213e)';this.style.minHeight='200px';this.alt='Image unavailable'">
+            <img ${imageAttrs(url, country.name, 800, '', { keywords: imageKeywords })}>
           </div>`
           )
           .join('')}
@@ -90,6 +104,45 @@ export function renderCountryPage(country, container) {
         <p>${country.climate}</p>
       </div>`
     : ''
+
+  const routeHtml = (country.landmarks || []).length
+    ? `
+      <div class="cp-route-strip">
+        ${(country.landmarks || []).map((lm, index) => `
+          <button class="cp-route-stop" data-landmark-index="${index}">
+            <span>${index + 1}</span>
+            <strong>${lm.name}</strong>
+          </button>
+        `).join('')}
+      </div>`
+    : ''
+
+  const relatedHtml = relatedCountries.length
+    ? `
+      <section class="cp-section">
+        <h3 class="cp-section-title">Related Profiles</h3>
+        <div class="cp-related-grid">
+          ${relatedCountries.map(item => `
+            <a class="cp-related-card" href="#/country/${item.id}">
+              <span>${item.flag}</span>
+              <strong>${item.name}</strong>
+              <em>${item.terrain}</em>
+            </a>
+          `).join('')}
+        </div>
+      </section>`
+    : ''
+
+  const comparisonHtml = `
+    <section class="cp-section">
+      <h3 class="cp-section-title">Atlas Comparison</h3>
+      <div class="cp-compare-strip">
+        <div><span>Area rank</span><strong>#${areaRank}</strong><em>of ${COUNTRIES.length}</em></div>
+        <div><span>Elevation rank</span><strong>#${elevationRank}</strong><em>by high terrain</em></div>
+        <div><span>Regional peers</span><strong>${continentPeers.length}</strong><em>${country.continent}</em></div>
+        <div><span>Mapped stops</span><strong>${country.landmarks?.length || 0}</strong><em>landmarks</em></div>
+      </div>
+    </section>`
 
   // Full page template
   container.innerHTML = `
@@ -233,6 +286,95 @@ export function renderCountryPage(country, container) {
         gap: 1rem;
         margin-top: 1rem;
       }
+      .cp-profile-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 3rem;
+      }
+      .cp-profile-card {
+        background: var(--surface, #12121a);
+        border: 1px solid var(--border, #2a2a3a);
+        border-radius: 0.8rem;
+        padding: 1.2rem;
+      }
+      .cp-profile-card h3 {
+        font-size: 1rem;
+        margin-bottom: 0.65rem;
+      }
+      .cp-profile-card p {
+        color: var(--text2, #8888a0);
+        line-height: 1.75;
+        font-size: 0.94rem;
+      }
+      .cp-compare-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+      }
+      .cp-compare-strip div {
+        background: var(--surface, #12121a);
+        border: 1px solid var(--border, #2a2a3a);
+        border-radius: 0.8rem;
+        padding: 1rem;
+      }
+      .cp-compare-strip span {
+        display: block;
+        color: var(--text2, #8888a0);
+        font-size: 0.74rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 0.35rem;
+      }
+      .cp-compare-strip strong {
+        display: block;
+        font-size: 1.35rem;
+        margin-bottom: 0.2rem;
+      }
+      .cp-compare-strip em {
+        display: block;
+        color: var(--text2, #8888a0);
+        font-size: 0.8rem;
+        font-style: normal;
+      }
+      .cp-route-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.8rem;
+        margin-top: 1rem;
+      }
+      .cp-route-stop {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        background: var(--surface, #12121a);
+        border: 1px solid var(--border, #2a2a3a);
+        color: var(--text, #e8e8f0);
+        border-radius: 0.7rem;
+        padding: 0.8rem;
+        text-align: left;
+        cursor: pointer;
+        transition: border-color 0.25s, background 0.25s;
+      }
+      .cp-route-stop:hover {
+        border-color: var(--accent, #6c8aff);
+        background: rgba(108, 138, 255, 0.1);
+      }
+      .cp-route-stop span {
+        flex: 0 0 auto;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: rgba(108, 138, 255, 0.16);
+        color: var(--accent, #6c8aff);
+        font-weight: 800;
+      }
+      .cp-route-stop strong {
+        font-size: 0.86rem;
+        line-height: 1.25;
+      }
       .cp-info-card {
         background: var(--surface, #12121a);
         border: 1px solid var(--border, #2a2a3a);
@@ -319,6 +461,41 @@ export function renderCountryPage(country, container) {
       .cp-gallery-item:hover img {
         transform: scale(1.05);
       }
+      .cp-related-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+      .cp-related-card {
+        display: block;
+        background: var(--surface, #12121a);
+        border: 1px solid var(--border, #2a2a3a);
+        border-radius: 0.8rem;
+        padding: 1rem;
+        color: var(--text, #e8e8f0);
+        transition: border-color 0.25s, transform 0.25s;
+      }
+      .cp-related-card:hover {
+        border-color: var(--accent, #6c8aff);
+        transform: translateY(-3px);
+        color: var(--text, #e8e8f0);
+      }
+      .cp-related-card span {
+        display: block;
+        font-size: 1.7rem;
+        margin-bottom: 0.45rem;
+      }
+      .cp-related-card strong {
+        display: block;
+        margin-bottom: 0.35rem;
+      }
+      .cp-related-card em {
+        display: block;
+        color: var(--text2, #8888a0);
+        font-size: 0.8rem;
+        font-style: normal;
+        line-height: 1.45;
+      }
 
       /* Back button */
       .cp-back-btn {
@@ -346,6 +523,10 @@ export function renderCountryPage(country, container) {
       /* Responsive */
       @media (max-width: 768px) {
         .cp-hero { height: 45vh; min-height: 280px; }
+        .cp-profile-grid,
+        .cp-route-strip,
+        .cp-compare-strip,
+        .cp-related-grid { grid-template-columns: 1fr; }
         .cp-landmarks-grid { grid-template-columns: 1fr; }
         .cp-gallery-grid { grid-template-columns: 1fr; }
         .cp-content { padding: 0 1rem 3rem; }
@@ -357,9 +538,7 @@ export function renderCountryPage(country, container) {
       <!-- 1. Hero Banner -->
       <div class="cp-hero">
         <img class="cp-hero-img"
-          src="${country.heroImage || country.image || ''}"
-          alt="${country.name}"
-          onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#16213e)';this.style.minHeight='360px'">
+          ${imageAttrs(country.heroImage || country.image || '', country.name, 1400, '', { keywords: imageKeywords })}>
         <div class="cp-hero-overlay">
           <div class="cp-hero-flag">${country.flag || ''}</div>
           <h1 class="cp-hero-name">${country.name}</h1>
@@ -381,6 +560,19 @@ export function renderCountryPage(country, container) {
           <blockquote class="cp-description">${country.description || ''}</blockquote>
         </section>
 
+        <div class="cp-profile-grid">
+          <article class="cp-profile-card">
+            <h3>Geographic Signature</h3>
+            <p>${country.terrain || country.geography || ''}</p>
+          </article>
+          <article class="cp-profile-card">
+            <h3>Field Notes</h3>
+            <p>${country.name} spans ${country.area || 'a significant area'} with elevations from ${country.elevation || 'varied terrain'}, creating ${country.climate || 'distinct climate zones'} conditions across the profile.</p>
+          </article>
+        </div>
+
+        ${comparisonHtml}
+
         <!-- 4. Interactive Map -->
         <section class="cp-section">
           <h3 class="cp-section-title">Interactive Map</h3>
@@ -401,7 +593,8 @@ export function renderCountryPage(country, container) {
           country.landmarks && country.landmarks.length
             ? `
           <section class="cp-section">
-            <h3 class="cp-section-title">Notable Landmarks</h3>
+            <h3 class="cp-section-title">Landmark Route</h3>
+            ${routeHtml}
             <div class="cp-landmarks-grid">${landmarksHtml}</div>
           </section>`
             : ''
@@ -409,6 +602,8 @@ export function renderCountryPage(country, container) {
 
         <!-- 7. Photo Gallery -->
         ${galleryHtml}
+
+        ${relatedHtml}
 
         <!-- 8. Back Button -->
         <a href="#/" class="cp-back-btn">
@@ -426,6 +621,7 @@ export function renderCountryPage(country, container) {
   let mapInstance = null
   // Small delay to ensure the container has rendered and has dimensions
   requestAnimationFrame(() => {
+    attachImageFallbacks(container)
     mapInstance = createCountryMap(mapContainerId, country.id)
 
     // Ensure map renders correctly after container is visible
@@ -434,7 +630,7 @@ export function renderCountryPage(country, container) {
     }
 
     // Add click listeners on landmark cards to pan/fly the map
-    const landmarkCards = container.querySelectorAll('.cp-landmark-card')
+    const landmarkCards = container.querySelectorAll('.cp-landmark-card, .cp-route-stop')
     landmarkCards.forEach(card => {
       card.addEventListener('click', () => {
         if (!mapInstance) return

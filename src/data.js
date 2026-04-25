@@ -680,6 +680,74 @@ export const COUNTRIES = [
     ]
   },
   {
+    id: "russia",
+    name: "Russia",
+    nameLocal: "Россия",
+    flag: "🇷🇺",
+    continent: "europe",
+    capital: "Moscow",
+    population: "143M",
+    area: "17,098,242 km²",
+    language: "Russian",
+    subtitle: "Across Eleven Time Zones",
+    image: "https://images.unsplash.com/photo-1513326738677-b964603b136d?w=800&q=80",
+    heroImage: "https://images.unsplash.com/photo-1513326738677-b964603b136d?w=1200&q=80",
+    tags: ["Taiga Forests", "Arctic Tundra", "Steppe", "Lake Baikal"],
+    lat: 61.52,
+    lng: 105.32,
+    elevation: "-28 - 5,642m",
+    climate: "Subarctic to Continental",
+    terrain: "Vast plains, taiga forest, tundra, mountains, steppe, lake basins",
+    galleryImages: [
+      "https://images.unsplash.com/photo-1520106212299-d99c443e4568?w=600&q=80",
+      "https://images.unsplash.com/photo-1533409217603-e4b784d14e4e?w=600&q=80",
+      "https://images.unsplash.com/photo-1513326738677-b964603b136d?w=600&q=80",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80"
+    ],
+    description: "Russia is the world's largest country, spanning northern Eurasia from the Baltic and Black Sea regions to the Pacific. Its landscapes shift across immense distances: Arctic tundra, boreal taiga, broad river plains, steppe grasslands, mountain chains, volcanic peninsulas, and the deep freshwater basin of Lake Baikal.",
+    geography: "The Ural Mountains form a traditional divide between European Russia and Siberia. West Siberia contains some of Earth's largest lowland plains and wetlands, while eastern Siberia rises into plateaus, mountain systems, and permafrost terrain. The Russian Far East includes Kamchatka's volcanoes and Pacific coastal ranges.",
+    landmarks: [
+      { icon: "🌊", name: "Lake Baikal", desc: "World's deepest freshwater lake and a major rift basin", lat: 53.5587, lng: 108.1650 },
+      { icon: "🌋", name: "Kamchatka Volcanoes", desc: "Pacific Ring of Fire volcanic peninsula with active cones", lat: 56.1328, lng: 160.6420 },
+      { icon: "🌲", name: "Siberian Taiga", desc: "Immense boreal forest belt across northern Asia", lat: 60.0000, lng: 100.0000 },
+      { icon: "🏔️", name: "Mount Elbrus", desc: "Europe's highest peak in the Caucasus at 5,642m", lat: 43.3499, lng: 42.4453 }
+    ]
+  },
+  {
+    id: "unitedstates",
+    name: "United States",
+    nameLocal: "United States",
+    flag: "🇺🇸",
+    continent: "americas",
+    capital: "Washington, D.C.",
+    population: "341M",
+    area: "9,833,517 km²",
+    language: "English",
+    subtitle: "Continental Crossroads",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80",
+    heroImage: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80",
+    tags: ["Rocky Mountains", "Great Plains", "Canyons", "Pacific Coast"],
+    lat: 39.83,
+    lng: -98.58,
+    elevation: "-86 - 6,190m",
+    climate: "Arctic to Tropical",
+    terrain: "Mountain ranges, interior plains, deserts, forests, coasts, volcanic islands",
+    galleryImages: [
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80",
+      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&q=80",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80",
+      "https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?w=600&q=80"
+    ],
+    description: "The United States spans a continental-scale range of environments, from Arctic Alaska and the volcanic Hawaiian chain to the Appalachians, Great Plains, Rocky Mountains, deserts of the Southwest, Mississippi basin, and Atlantic and Pacific coastlines. Few countries compress so many major landscape systems into one political geography.",
+    geography: "The western United States is dominated by the Rocky Mountains, intermontane basins, deserts, and Pacific coastal ranges. The central interior opens into the Great Plains and Mississippi drainage system, while the east includes the Appalachians and Atlantic coastal plain. Alaska adds arctic, glacial, and high mountain systems.",
+    landmarks: [
+      { icon: "🏜️", name: "Grand Canyon", desc: "Colorado River canyon exposing nearly two billion years of rock", lat: 36.1069, lng: -112.1129 },
+      { icon: "🏔️", name: "Denali", desc: "North America's highest peak at 6,190m", lat: 63.0695, lng: -151.0074 },
+      { icon: "🌋", name: "Hawaiian Volcanoes", desc: "Active shield volcanoes building Pacific islands", lat: 19.4194, lng: -155.2885 },
+      { icon: "🌲", name: "Yellowstone", desc: "Large volcanic caldera with geysers and geothermal basins", lat: 44.4280, lng: -110.5885 }
+    ]
+  },
+  {
     id: "colombia",
     name: "Colombia",
     nameLocal: "Colombia",
