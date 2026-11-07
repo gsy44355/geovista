@@ -7,13 +7,20 @@ import { COUNTRIES } from './data.js'
  *   #/              -> renderHome()
  *   (empty hash)    -> renderHome()
  *   #/country/{id}  -> renderCountry(country)
+ *   #/atlas/...     -> renderAtlas(path)
+ *   unknown path   -> not-found page
  *
  * @param {Function} renderHome    - Called with no arguments for the home route
  * @param {Function} renderCountry - Called with the matched country object
  */
-export function initRouter(renderHome, renderCountry) {
+export function initRouter(renderHome, renderCountry, renderAtlas) {
   function handleRoute() {
     const hash = window.location.hash || '#/'
+
+    if (hash === '#/atlas' || hash.startsWith('#/atlas/')) {
+      renderAtlas(hash.slice(1).replace(/\/$/, ''))
+      return
+    }
 
     // Match country detail route: #/country/{id}
     const countryMatch = hash.match(/^#\/country\/(.+)$/)
@@ -24,12 +31,13 @@ export function initRouter(renderHome, renderCountry) {
       if (country) {
         renderCountry(country)
       } else {
-        // Country not found, fall back to home
-        renderHome()
+        // Unknown countries receive a recoverable not-found page.
+        renderAtlas(hash.slice(1))
       }
     } else {
       // Home route or any unrecognized route
-      renderHome()
+      if (hash.startsWith('#/') && hash !== '#/') renderAtlas(hash.slice(1))
+      else renderHome()
     }
   }
 

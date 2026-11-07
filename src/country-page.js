@@ -1,3 +1,5 @@
+import { countryPath, landmarkPath } from './atlas-data.js'
+import { utilityNav, pageActions, refreshSavedButtons } from './discovery.js'
 import { COUNTRIES } from './data.js'
 import { createCountryMap } from './maps.js'
 import { attachImageFallbacks, imageAttrs } from './assets.js'
@@ -61,11 +63,11 @@ export function renderCountryPage(country, container) {
   const landmarksHtml = (country.landmarks || [])
     .map(
       (lm, i) => `
-      <div class="cp-landmark-card" data-landmark-index="${i}" title="Click to locate on map">
+      <div class="cp-landmark-card" data-landmark-index="${i}">
         <span class="cp-landmark-icon">${lm.icon || ''}</span>
         <div class="cp-landmark-body">
           <h4>${lm.name}</h4>
-          <p>${lm.desc || ''}</p>
+          <p>${lm.desc || ''}</p><button class="cp-map-focus" data-landmark-index="${i}" aria-label="Locate ${lm.name} on map">Locate on map</button><a href="#${landmarkPath(country, lm)}" class="cp-explore-link">Explore this landmark →</a>
         </div>
       </div>`
     )
@@ -533,7 +535,7 @@ export function renderCountryPage(country, container) {
       }
     </style>
 
-    <div class="cp-page">
+    <div class="cp-page"><header class="atlas-top"><a class="atlas-brand" href="#/">Geo<span>Vista</span></a><nav class="atlas-primary" aria-label="Country navigation"><a href="#${countryPath(country)}">Country atlas</a>${utilityNav()}</nav></header>
 
       <!-- 1. Hero Banner -->
       <div class="cp-hero">
@@ -547,7 +549,7 @@ export function renderCountryPage(country, container) {
         </div>
       </div>
 
-      <div class="cp-content">
+      <div class="cp-content">${pageActions(countryPath(country))}<p class="atlas-country-entry"><a href="#/atlas">Field atlas</a> / <a href="#/atlas/${country.continent}">${country.continent}</a> / <a href="#${countryPath(country)}">${country.name}: explore all landmarks →</a></p>
 
         <!-- 2. Quick Facts Bar -->
         <div class="cp-facts-bar">
@@ -617,22 +619,26 @@ export function renderCountryPage(country, container) {
     </div>
   `
 
+  refreshSavedButtons(container)
   // After innerHTML is set, initialize the Leaflet map
   let mapInstance = null
   // Small delay to ensure the container has rendered and has dimensions
-  requestAnimationFrame(() => {
+  let disposed = false
+  const frame = requestAnimationFrame(() => {
+    if (disposed) return
     attachImageFallbacks(container)
     mapInstance = createCountryMap(mapContainerId, country.id)
 
     // Ensure map renders correctly after container is visible
     if (mapInstance) {
-      setTimeout(() => mapInstance.invalidateSize(), 200)
+      setTimeout(() => mapInstance?.invalidateSize(), 200)
     }
 
     // Add click listeners on landmark cards to pan/fly the map
-    const landmarkCards = container.querySelectorAll('.cp-landmark-card, .cp-route-stop')
+    const landmarkCards = container.querySelectorAll('.cp-map-focus, .cp-route-stop')
     landmarkCards.forEach(card => {
-      card.addEventListener('click', () => {
+      card.addEventListener('click', event => {
+        if (event.target.closest('a')) return
         if (!mapInstance) return
         const idx = parseInt(card.dataset.landmarkIndex, 10)
         const lm = country.landmarks[idx]
@@ -656,4 +662,5 @@ export function renderCountryPage(country, container) {
       })
     })
   })
+  return () => { disposed = true; cancelAnimationFrame(frame); mapInstance?.remove(); mapInstance = null }
 }

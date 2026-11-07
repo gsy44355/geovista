@@ -9,46 +9,52 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
-  <script type="module" crossorigin src="/assets/index-c146XhFK.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-C9Y687qZ.css">
+  <script type="module" crossorigin src="/assets/index-BZfsS8th.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/preload-helper-DWTEM3RW.js">
+  <link rel="modulepreload" crossorigin href="/assets/assets-C6F8jgfj.js">
+  <link rel="modulepreload" crossorigin href="/assets/data-DrTZH58z.js">
+  <link rel="modulepreload" crossorigin href="/assets/atlas-data-DYUO2TYn.js">
+  <link rel="modulepreload" crossorigin href="/assets/discovery-CNYlTX4o.js">
+  <link rel="modulepreload" crossorigin href="/assets/router-DNW-zKBx.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-BS3OqyCt.css">
 </head>
 <body>
+  <noscript><p>GeoVista needs JavaScript to open the interactive atlas. Its content and notes run in your browser; no account is required.</p></noscript>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- HOME VIEW -->
-  <div id="home-view">
+  <div id="home-view" style="display:none">
 
     <!-- HEADER -->
     <header class="site-header">
       <div class="header-inner">
         <a href="#/" class="logo">Geo<span>Vista</span></a>
-        <button class="nav-toggle" aria-label="Menu">&#9776;</button>
-        <nav>
-          <a href="#hero">Home</a>
-          <a href="#world-brief-section">Brief</a>
+        <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="main-navigation">&#9776;</button>
+        <nav id="main-navigation" aria-label="Main navigation">
+          <a href="#hero">Overview</a>
+          <a href="#/atlas" class="nav-featured">Field atlas <span>↗</span></a>
           <a href="#landscape-section">Landscapes</a>
-          <a href="#climate-section">Climate</a>
-          <a href="#explorer-section">Explorer</a>
+          <a href="#explorer-section">Countries</a>
           <a href="#journeys-section">Journeys</a>
-          <a href="#explore">Explore</a>
-          <a href="#continent-asia">Asia</a>
-          <a href="#continent-europe">Europe</a>
-          <a href="#continent-americas">Americas</a>
-          <a href="#continent-africa">Africa</a>
-          <a href="#continent-oceania">Oceania</a>
-          <a href="#stats-section">Stats</a>
-          <a href="#gallery-section">Gallery</a>
-          <a href="#about">About</a>
+          <details class="nav-more"><summary>Discover <span aria-hidden="true">⌄</span></summary><div>
+            <a href="#world-brief-section">World brief</a>
+            <a href="#climate-section">Climate systems</a>
+            <a href="#stats-section">Data & comparisons</a>
+            <a href="#gallery-section">Photo journal</a>
+            <a href="#about">About GeoVista</a>
+          </div></details>
         </nav>
       </div>
     </header>
 
     <!-- HERO -->
     <section class="hero" id="hero">
-      <div class="hero-bg"></div>
+      <div class="hero-bg"><img class="hero-poster" data-src="/images/field/fjord.jpg" alt=""></div>
       <div class="hero-globe" id="globe-container"></div>
       <div class="hero-content">
-        <h1>Explore Earth's Landscapes</h1>
+        <h1 tabindex="-1">Explore Earth's Landscapes</h1>
         <p>A curated journey through the planet's most breathtaking geographical wonders — from volcanic islands to ancient deserts, glacial fjords to tropical rainforests.</p>
+        <div class="hero-actions"><a class="atlas-button" href="#/atlas">Start exploring →</a><button class="atlas-button secondary" data-open-search>Find a place</button></div><a id="resume-exploration" class="resume-exploration" hidden></a>
         <div class="hero-stats">
           <div class="hero-stat"><div class="num" data-target="22" data-suffix="+">0</div><div class="label">Countries</div></div>
           <div class="hero-stat"><div class="num" data-target="5">0</div><div class="label">Continents</div></div>
@@ -56,10 +62,16 @@
           <div class="hero-stat"><div class="num" data-target="40" data-suffix="M+ km²">0</div><div class="label">Area Covered</div></div>
         </div>
       </div>
+      <div class="globe-controls"><button id="load-globe">Enable interactive 3D globe</button><p id="globe-status" role="status"></p><a href="/images/field/CREDITS.md" target="_blank" rel="noopener">Landscape photo credits</a></div>
       <div class="scroll-hint">
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M15 5v20M8 18l7 7 7-7" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"/></svg>
       </div>
     </section>
+    <section class="atlas-home-entry">
+      <div><span class="eyebrow">NEW · THE FIELD ATLAS</span><h2>Look closer. Every landscape has a story.</h2><p>Explore 5 regions, 23 countries and 92 landmarks. Follow six guided studies from place and process to evidence and your own field notebook.</p></div>
+      <a class="atlas-button" href="#/atlas">Open the field atlas →</a>
+    </section>
+
 
     <!-- FILTER -->
     <section class="continent-section" id="explore" style="padding-bottom:2rem">
@@ -196,21 +208,20 @@
           </div>
           <div class="footer-col">
             <h4>Resources</h4>
-            <a href="#">Geographic Data</a>
-            <a href="#">Photography Credits</a>
-            <a href="#">UNESCO Heritage</a>
-            <a href="#">Climate Zones</a>
+            <a href="#/atlas">Geographic atlas</a>
+            <a href="/images/field/CREDITS.md">Photography credits</a>
+            <a href="https://whc.unesco.org/en/list/" target="_blank" rel="noopener">UNESCO World Heritage</a>
+            <a href="#climate-section">Climate systems</a>
           </div>
           <div class="footer-col">
-            <h4>Connect</h4>
-            <a href="#">Newsletter</a>
-            <a href="#">Contact</a>
-            <a href="#">Contribute</a>
-            <a href="#">Privacy Policy</a>
+            <h4>Your exploration</h4>
+            <a href="#/library">Saved places & notes</a>
+            <a href="#/library">Backup & local data</a>
+            <a href="#about">About this atlas</a>
           </div>
         </div>
         <div class="footer-bottom">
-          &copy; 2024 GeoVista. Built with curiosity about our planet.
+          &copy; 2026 GeoVista. Built with curiosity about our planet.
         </div>
       </div>
     </footer>

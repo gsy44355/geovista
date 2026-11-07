@@ -5,6 +5,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
+    manifest: true,
   },
   server: {
     port: 5173,

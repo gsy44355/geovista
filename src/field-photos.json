@@ -1,0 +1,62 @@
+{
+  "etna": {
+    "title": "File:Mount Etna 2024 21.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Mount_Etna_2024_21.jpg/1280px-Mount_Etna_2024_21.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:Mount_Etna_2024_21.jpg",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Cayambe",
+    "description": "Lava fields and vegetation on Mount Etna in Sicily, Italy.",
+    "local": "/images/field/etna.jpg"
+  },
+  "fuji": {
+    "title": "File:Mount Fuji from Lake Kawaguchi 20170206.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Mount_Fuji_from_Lake_Kawaguchi_20170206.jpg/1280px-Mount_Fuji_from_Lake_Kawaguchi_20170206.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:Mount_Fuji_from_Lake_Kawaguchi_20170206.jpg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Suicasmo",
+    "description": "Mount Fuji from Lake Kawaguchi",
+    "local": "/images/field/fuji.jpg"
+  },
+  "namib": {
+    "title": "File:Sossusvlei sand dunes.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Sossusvlei_sand_dunes.jpg/1280px-Sossusvlei_sand_dunes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:Sossusvlei_sand_dunes.jpg",
+    "license": "CC BY-SA 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+    "artist": "Winfried Bruenken (Amrum)",
+    "description": "Dünen nahe dem Sossusvlei, Namib-Naukluft-Nationalpark, Namibia",
+    "local": "/images/field/namib.jpg"
+  },
+  "reef": {
+    "title": "File:Aerial View of Great Barrier Reef (Ank Kumar) 04.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Aerial_View_of_Great_Barrier_Reef_%28Ank_Kumar%29_04.jpg/1280px-Aerial_View_of_Great_Barrier_Reef_%28Ank_Kumar%29_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:Aerial_View_of_Great_Barrier_Reef_(Ank_Kumar)_04.jpg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Ank Kumar",
+    "description": "Aerial View of Great Barrier Reef",
+    "local": "/images/field/reef.jpg"
+  },
+  "peru": {
+    "title": "File:80 - Machu Picchu - Juin 2009 - edit.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/80_-_Machu_Picchu_-_Juin_2009_-_edit.jpg/1280px-80_-_Machu_Picchu_-_Juin_2009_-_edit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:80_-_Machu_Picchu_-_Juin_2009_-_edit.jpg",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Martin St-Amant (S23678)",
+    "description": "The Macchu Picchu, a UNESCO World Heritage Site near Cusco in Peru, at twilight.",
+    "local": "/images/field/peru.jpg"
+  },
+  "fjord": {
+    "title": "File:Geirangerfjord from Ørnesvingen, 2013 June.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Geirangerfjord_from_%C3%98rnesvingen%2C_2013_June.jpg/1280px-Geirangerfjord_from_%C3%98rnesvingen%2C_2013_June.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:Geirangerfjord_from_%C3%98rnesvingen,_2013_June.jpg",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Ximonic (Simo Räsänen)",
+    "description": "A view to Geirangerfjord from Ørnesvingen, Stranda, Møre og Romsdal, Norway in 2013 June.",
+    "local": "/images/field/fjord.jpg"
+  }
+}

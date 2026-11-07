@@ -1,0 +1,169 @@
+{
+  "_assets-C6F8jgfj.js": {
+    "file": "assets/assets-C6F8jgfj.js",
+    "name": "assets"
+  },
+  "_atlas-data-DYUO2TYn.js": {
+    "file": "assets/atlas-data-DYUO2TYn.js",
+    "name": "atlas-data",
+    "imports": [
+      "_data-DrTZH58z.js"
+    ]
+  },
+  "_chunk-DECur_0Z.js": {
+    "file": "assets/chunk-DECur_0Z.js",
+    "name": "chunk"
+  },
+  "_data-DrTZH58z.js": {
+    "file": "assets/data-DrTZH58z.js",
+    "name": "data"
+  },
+  "_discovery-CNYlTX4o.js": {
+    "file": "assets/discovery-CNYlTX4o.js",
+    "name": "discovery",
+    "imports": [
+      "_atlas-data-DYUO2TYn.js"
+    ]
+  },
+  "_field-photos-Dmv3lZxA.js": {
+    "file": "assets/field-photos-Dmv3lZxA.js",
+    "name": "field-photos"
+  },
+  "_preload-helper-DWTEM3RW.js": {
+    "file": "assets/preload-helper-DWTEM3RW.js",
+    "name": "preload-helper"
+  },
+  "_router-DNW-zKBx.js": {
+    "file": "assets/router-DNW-zKBx.js",
+    "name": "router",
+    "imports": [
+      "_data-DrTZH58z.js"
+    ]
+  },
+  "index.html": {
+    "file": "assets/index-BZfsS8th.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "imports": [
+      "_preload-helper-DWTEM3RW.js",
+      "_assets-C6F8jgfj.js",
+      "_atlas-data-DYUO2TYn.js",
+      "_discovery-CNYlTX4o.js",
+      "_router-DNW-zKBx.js"
+    ],
+    "dynamicImports": [
+      "src/home.js",
+      "src/country-page.js",
+      "src/library.js",
+      "src/atlas.js"
+    ],
+    "css": [
+      "assets/index-BS3OqyCt.css"
+    ]
+  },
+  "src/atlas.js": {
+    "file": "assets/atlas-BSBBROzn.js",
+    "name": "atlas",
+    "src": "src/atlas.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_preload-helper-DWTEM3RW.js",
+      "_assets-C6F8jgfj.js",
+      "_atlas-data-DYUO2TYn.js",
+      "_discovery-CNYlTX4o.js",
+      "_field-photos-Dmv3lZxA.js"
+    ],
+    "dynamicImports": [
+      "src/maps.js"
+    ]
+  },
+  "src/charts.js": {
+    "file": "assets/charts-CZ8YXezk.js",
+    "name": "charts",
+    "src": "src/charts.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_data-DrTZH58z.js"
+    ]
+  },
+  "src/country-page.js": {
+    "file": "assets/country-page-BwAwwauo.js",
+    "name": "country-page",
+    "src": "src/country-page.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/maps.js",
+      "_assets-C6F8jgfj.js",
+      "_atlas-data-DYUO2TYn.js",
+      "_data-DrTZH58z.js",
+      "_discovery-CNYlTX4o.js"
+    ]
+  },
+  "src/gallery.js": {
+    "file": "assets/gallery-DaHVn5vl.js",
+    "name": "gallery",
+    "src": "src/gallery.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_atlas-data-DYUO2TYn.js",
+      "_discovery-CNYlTX4o.js",
+      "_field-photos-Dmv3lZxA.js"
+    ]
+  },
+  "src/globe.js": {
+    "file": "assets/globe-DUxGBpKM.js",
+    "name": "globe",
+    "src": "src/globe.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_chunk-DECur_0Z.js",
+      "_data-DrTZH58z.js"
+    ]
+  },
+  "src/home.js": {
+    "file": "assets/home-6oiDwh-X.js",
+    "name": "home",
+    "src": "src/home.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_chunk-DECur_0Z.js",
+      "_preload-helper-DWTEM3RW.js",
+      "_assets-C6F8jgfj.js",
+      "_data-DrTZH58z.js",
+      "_router-DNW-zKBx.js"
+    ],
+    "dynamicImports": [
+      "src/globe.js",
+      "src/charts.js",
+      "src/gallery.js"
+    ],
+    "css": [
+      "assets/home-CaP8eqkB.css"
+    ]
+  },
+  "src/library.js": {
+    "file": "assets/library-ChAW2hqv.js",
+    "name": "library",
+    "src": "src/library.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_atlas-data-DYUO2TYn.js",
+      "_discovery-CNYlTX4o.js"
+    ]
+  },
+  "src/maps.js": {
+    "file": "assets/maps-DSw-9UBS.js",
+    "name": "maps",
+    "src": "src/maps.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_chunk-DECur_0Z.js",
+      "_atlas-data-DYUO2TYn.js",
+      "_data-DrTZH58z.js"
+    ],
+    "css": [
+      "assets/maps-vh-t_kPv.css"
+    ]
+  }
+}

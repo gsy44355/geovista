@@ -76,7 +76,7 @@ export function initGlobe() {
     .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
     .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
     .showAtmosphere(true)
-    .atmosphereColor('rgba(108, 138, 255, 0.3)')
+    .atmosphereColor('#6c8aff')
     .atmosphereAltitude(0.25)
 
     // Points: each country as a glowing dot
@@ -93,7 +93,7 @@ export function initGlobe() {
     .labelsData(countries)
     .labelLat(d => d.lat)
     .labelLng(d => d.lng)
-    .labelText(d => `${d.flag} ${d.name}`)
+    .labelText(d => d.name)
     .labelSize(1.2)
     .labelDotRadius(0.4)
     .labelColor(d => getContinentColor(d.continent))
